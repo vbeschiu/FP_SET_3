@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
 using System.Data;
+using System.CodeDom.Compiler;
 
 namespace SET_3
 {
@@ -12,7 +13,7 @@ namespace SET_3
     {
         static void Main(string[] args)
         {
-            //Meniu();
+            Meniu();
             //P1();
             //P2();
             //P3();
@@ -21,8 +22,10 @@ namespace SET_3
             //P6();
             //P7();
             //P8();
-            P9();
+            //P9();
             //P10();
+            //P11();
+            
         }
         private static void Meniu()
         {
@@ -32,37 +35,37 @@ namespace SET_3
                 Console.WriteLine("Alegeti o problema introducad numarul corespunzator din lista de mai jos:");
                 Console.WriteLine();
                 Console.WriteLine("0. IESIRE");
-                Console.WriteLine("1. ");
-                Console.WriteLine("2. ");
-                Console.WriteLine("3. ");
-                Console.WriteLine("4. ");
-                Console.WriteLine("5. ");
-                Console.WriteLine("6. ");
-                Console.WriteLine("7. ");
-                Console.WriteLine("8. ");
-                Console.WriteLine("9. ");
-                Console.WriteLine("10.");
-                Console.WriteLine("11.");
-                Console.WriteLine("12. ");
-                Console.WriteLine("13. ");
-                Console.WriteLine("14. ");
-                Console.WriteLine("15. ");
-                Console.WriteLine("16. ");
-                Console.WriteLine("17. ");
-                Console.WriteLine("18. ");
-                Console.WriteLine("19. ");
-                Console.WriteLine("20. ");
-                Console.WriteLine("21. ");
-                Console.WriteLine("22. ");
-                Console.WriteLine("23. ");
-                Console.WriteLine("24. ");
-                Console.WriteLine("25. ");
-                Console.WriteLine("26. ");
-                Console.WriteLine("27. ");
-                Console.WriteLine("28. ");
-                Console.WriteLine("29. ");
-                Console.WriteLine("30. ");
-                Console.WriteLine("31. ");
+                Console.WriteLine("1. Calculati suma elementelor unui vector de n numere citite de la tastatura.");
+                Console.WriteLine("2. Se da un vector cu n elemente si o valoare k. Se cere sa se determine prima pozitie din vector pe care apare k.");
+                Console.WriteLine("3. Sa se determine pozitiile dintr-un vector pe care apar cel mai mic si cel mai mare element al vectorului. ");
+                Console.WriteLine("4. Deteminati printr-o singura parcurgere, cea mai mica si cea mai mare valoare dintr-un vector si de cate ori apar acestea. ");
+                Console.WriteLine("5. Se da un vector cu n elemente, o valoare e si o pozitie din vector k. Se cere sa se insereze valoarea e in vector pe pozitia k. ");
+                Console.WriteLine("6. Se da un vector cu n elemente si o pozitie din vector k. Se cere sa se stearga din vector elementul de pe pozitia k. ");
+                Console.WriteLine("7. Reverse. Se da un vector nu n elemente. Se cere sa se inverseze ordinea elementelor din vector. ");
+                Console.WriteLine("8. Rotire. Se da un vector cu n elemente. Rotiti elementele vectorului cu o pozitie spre stanga. ");
+                Console.WriteLine("9. Rotire k. Se da un vector cu n elemente. Rotiti elementele vectorului cu k pozitii spre stanga. ");
+                Console.WriteLine("10. Cautare binara. Se da un vector cu n elemente sortat in ordine crescatoare. Se cere sa se determine pozitia unui element dat k. ");
+                Console.WriteLine("11. Se da un numar natural n. Se cere sa se afiseze toate numerele prime mai mici sau egale cu n (ciurul lui Eratostene). ");
+                //Console.WriteLine("12. ");
+                //Console.WriteLine("13. ");
+                //Console.WriteLine("14. ");
+                //Console.WriteLine("15. ");
+                //Console.WriteLine("16. ");
+                //Console.WriteLine("17. ");
+                //Console.WriteLine("18. ");
+                //Console.WriteLine("19. ");
+                //Console.WriteLine("20. ");
+                //Console.WriteLine("21. ");
+                //Console.WriteLine("22. ");
+                //Console.WriteLine("23. ");
+                //Console.WriteLine("24. ");
+                //Console.WriteLine("25. ");
+                //Console.WriteLine("26. ");
+                //Console.WriteLine("27. ");
+                //Console.WriteLine("28. ");
+                //Console.WriteLine("29. ");
+                //Console.WriteLine("30. ");
+                //Console.WriteLine("31. ");
                 string m = "Apasati Enter pentu a merge la meniu.";
                 try
                 {
@@ -76,7 +79,7 @@ namespace SET_3
                     break;
                 else
                 {
-                    if (p >= 0 && p <= 17)
+                    if (p >= 0 && p <= 31)
                     {
                         switch (p)
                         {
@@ -91,12 +94,12 @@ namespace SET_3
                             case 9: Console.Clear(); P9(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
                             case 10: Console.Clear(); P10(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
                             case 11: Console.Clear(); P11(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
-                            case 12: Console.Clear(); P12(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
-                            case 13: Console.Clear(); P13(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
-                            case 14: Console.Clear(); P14(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
-                            case 15: Console.Clear(); P15(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
-                            case 16: Console.Clear(); P16(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
-                            case 17: Console.Clear(); P17(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
+                            //case 12: Console.Clear(); P12(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
+                            //case 13: Console.Clear(); P13(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
+                            //case 14: Console.Clear(); P14(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
+                            //case 15: Console.Clear(); P15(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
+                            //case 16: Console.Clear(); P16(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
+                            //case 17: Console.Clear(); P17(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
                                 //case 18: Console.Clear(); P18(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
                                 //case 19: Console.Clear(); P19(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
                                 //case 20: Console.Clear(); P20(); Console.WriteLine(m); Console.ReadLine(); Console.Clear(); break;
@@ -172,6 +175,34 @@ namespace SET_3
                 c++;
             }
             return x;
+        }
+        /// <summary>
+        /// Cautare binara a unui element intr-un vector ordonat
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="n"></param>
+        /// <param name="k"></param>
+        /// <returns>Returneaza pozitia lui k in vector sau -1 daca k nu se afla in vector</returns>
+        private static int BinarySearch(int[] v, int n, int k)
+        {
+            if (k == v[n - 1])
+                return n - 1;
+            else
+            {
+                int st = 0;
+                int dr = n - 1;
+                int poz = -1;
+                while (st < dr && poz == -1)
+                {
+                    int m = (st + dr) / 2;
+                    if (v[m] == k)
+                        poz = m;
+                    else if (v[m] < k)
+                        st = m + 1;
+                    else dr = m - 1;
+                }
+                return poz;
+            }
         }
 
         /// <summary>
@@ -382,9 +413,15 @@ namespace SET_3
             int n = int.Parse(Console.ReadLine());
             int[] v = new int[n];
             ReadArray(v, n);
-            Console.Write("k = ");
-            int k = int.Parse(Console.ReadLine());
-            WriteArray(RotArray(v, n, k), n);
+            int k;
+            do
+            {
+                Console.Write("k = ");
+                k = int.Parse(Console.ReadLine());
+                if (k <= n && k > 0)
+                    WriteArray(RotArray(v, n, k), n);
+                else Console.WriteLine("k trebuie sa fie intre 1 si n");
+            } while (k > n || k < 1);
             Console.WriteLine();
             Console.WriteLine();
         }
@@ -393,17 +430,40 @@ namespace SET_3
         /// </summary>
         private static void P10()
         {
-            Console.WriteLine("10. "); Console.WriteLine();
-
+            Console.WriteLine("10. Cautare binara. Se da un vector cu n elemente sortat in ordine crescatoare. " +
+                              "Se cere sa se determine pozitia unui element dat k. " +
+                              "Daca elementul nu se gaseste in vector rezultatul va fi -1."); Console.WriteLine();
+            Console.Write("n = ");
+            int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n];
+            ReadArray(v, n);
+            Console.Write("k = ");
+            int k = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Pozitia lui {k} este: {BinarySearch(v, n, k)}");
             Console.WriteLine();
         }
+
         /// <summary>
-        /// 
+        /// Afiseaza toate numerele prime mai mici sau egale cu n
         /// </summary>
         private static void P11()
         {
-            Console.WriteLine("11. "); Console.WriteLine();
-
+            Console.WriteLine("11. Se da un numar natural n. " +
+                              "Se cere sa se afiseze toate numerele prime mai mici sau egale cu n (ciurul lui Eratostene)."); Console.WriteLine();
+            Console.Write("n = ");
+            int n = int.Parse(Console.ReadLine());
+            int[] v = new int[n + 1];
+            for (int i = 0; i < n; i++)
+                v[i] = 0;
+            v[0] = 1;
+            v[1] = 1;
+            for (int i = 2; i * i < n; i++)
+                if (v[i] == 0)
+                    for (int j = 2; j <= n / i; j++)
+                        v[i * j] = 1;
+            for (int i = 0; i <= n; i++)
+                if (v[i] == 0)
+                  Console.Write(i + " "); 
             Console.WriteLine();
         }
         /// <summary>
